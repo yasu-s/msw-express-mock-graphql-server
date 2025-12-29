@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import { createMiddleware } from '@mswjs/http-middleware'
 import { HttpResponse, graphql } from 'msw'
 import cors from 'cors'
+import userJson from './user.json'
 
 // port, GraphQLのpath設定
 const PORT = 3000;
@@ -20,7 +21,7 @@ app.use(bodyParser.json())
 app.use(GRAPHQL_PATH, express.Router().use(createMiddleware(...[
   // operationName が GetUser の時のモック
   graphql.query('GetUser', () => {
-    return  HttpResponse.json({ data: { user: { id: 1, name: 'hoge' }} })
+    return  HttpResponse.json({ data: userJson })
   })
 ])))
 
