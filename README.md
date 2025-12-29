@@ -20,7 +20,7 @@
 $ npm i
 
 # GraphQLモックサーバー起動
-$ npm run dev
+$ npm run start
 ```
 
 ## 参考URL
