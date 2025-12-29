@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from "body-parser";
 import { createMiddleware } from '@mswjs/http-middleware'
-import { http, HttpResponse, graphql } from 'msw'
+import { HttpResponse, graphql } from 'msw'
 import cors from 'cors'
 
 // port, GraphQLのpath設定
