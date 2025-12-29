@@ -21,6 +21,15 @@ $ npm i
 
 # GraphQLモックサーバー起動
 $ npm run start
+
+# GraphQLクエリ実行
+$ curl -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "query GetUser($id: ID!) { user(id: $id) { id name } }",
+    "variables": { "id": "123" }
+  }' \
+  http://localhost:3000/graphql
 ```
 
 ## 参考URL
