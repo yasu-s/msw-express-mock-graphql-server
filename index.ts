@@ -19,8 +19,13 @@ app.use(bodyParser.json())
 // GraphQLモック設定
 app.use(GRAPHQL_PATH, express.Router().use(createMiddleware(...[
   // operationName が GetUser の時のモック
-  graphql.query('GetUser', () => {
-    return  HttpResponse.json({ data: { user: { id: 1, name: 'hoge' }} })
+  graphql.query('GetUser', ({ variables }) => {
+    // variables.id の値によってレスポンスを変更
+    if (variables.id === '1') {
+      // id = 1 の場合
+      return HttpResponse.json({ data: { user: { id: variables.id, name: 'hogehoge' }} })
+    }
+    return HttpResponse.json({ data: { user: { id: variables.id, name: 'hoge' }} })
   })
 ])))
 
