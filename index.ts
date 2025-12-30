@@ -1,5 +1,4 @@
 import express from 'express';
-import bodyParser from "body-parser";
 import { createMiddleware } from '@mswjs/http-middleware'
 import { HttpResponse, graphql } from 'msw'
 import cors from 'cors'
@@ -9,12 +8,10 @@ const PORT = 3000;
 const GRAPHQL_PATH = '/graphql'
 
 const app = express();
+app.use(express.json())
 
 // CORS設定
 app.use(cors())
-
-// bodyParser設定
-app.use(bodyParser.json())
 
 // GraphQLモック設定
 app.use(GRAPHQL_PATH, express.Router().use(createMiddleware(...[
