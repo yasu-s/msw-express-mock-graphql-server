@@ -7,7 +7,8 @@ import cors from 'cors'
 const PORT = 3000;
 const GRAPHQL_PATH = '/graphql'
 
-const app = express();
+// express設定
+const app = express()
 app.use(express.json())
 
 // CORS設定
@@ -29,4 +30,4 @@ app.use(GRAPHQL_PATH, express.Router().use(createMiddleware(...[
 // server起動
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}${GRAPHQL_PATH}`);
-});
+})
